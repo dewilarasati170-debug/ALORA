@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALORA - Toko Barang Preloved</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8eff2;
+      color: #72032f;
+    }
+
+    header {
+      background:  #f8eff2;
+      color: rgb(78, 8, 8);
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    header h1 {
+      font-size: 25px;
+    }
+
+    header p {
+      margin-top: 5px;
+      color: #050705;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 65px 20px;
+      background: #d9ffda;
+    }
+
+    .hero h2 {
+      font-size: clamp(28px, 5vw, 44px);
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto 22px;
+    }
+
+    .hero a,
+    .buy {
+      display: inline-block;
+      background: #d66b6d;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 7px;
+    }
+
+    main {
+      max-width: 1150px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .section-title {
+      margin-bottom: 20px;
+    }
+
+    .tools {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    input, select {
+      padding: 12px;
+      border: 1px solid #d5d8cf;
+      border-radius: 7px;
+      background: white;
+      font-size: 15px;
+    }
+
+    input {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    select {
+      min-width: 180px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px #0000000a;
+    }
+
+    .product img {
+      display: block;
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      background: #e9e9e4;
+    }
+
+    .product-info {
+      padding: 16px;
+    }
+
+    .category {
+      color: #627963;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .product h3 {
+      margin: 9px 0;
+      font-size: 18px;
+    }
+
+    .condition {
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .price {
+      font-size: 19px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .buy {
+      display: block;
+      text-align: center;
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 35px;
+    }
+
+    .about {
+      background: #e9eee4;
+      padding: 30px;
+      margin-top: 45px;
+      border-radius: 10px;
+      line-height: 1.8;
+    }
+
+    footer {
+      background: #344b3c;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 750px) {
+      .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .product img {
+        height: 170px;
+      }
+
+      .product-info {
+        padding: 12px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .product img {
+        height: 240px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div>
+      <h1>ALORA</h1>
+      <p>Barang lama, cerita baru.</p>
+    </div>
+    <div>Belanja lebih bijak ♻️</div>
+  </header>
+
+  <section class="hero">
+    <h2>Temukan Harta Karunmu!</h2>
+    <p>
+      Berbagai barang preloved pilihan dengan harga bersahabat.
+      Temukan barang favoritmu dan beri mereka kesempatan kedua.
+    </p>
+    <a href="#katalog">Lihat Katalog</a>
+  </section>
+
+  <main>
+    <section id="katalog">
+      <h2 class="section-title">Katalog Preloved</h2>
+
+      <p style="margin-bottom:20px;color:#666;">
+        Temukan barang favoritmu di sini.
+      </p>
+
+      <div class="tools">
+        <input
+          type="search"
+          id="search"
+          placeholder="Cari nama barang..."
+          aria-label="Cari produk"
+        >
+
+        <select id="category" aria-label="Pilih kategori">
+          <option value="semua">Semua kategori</option>
+          <option value="Pakaian">Pakaian</option>
+          <option value="Tas">Tas</option>
+          <option value="Sepatu">Sepatu</option>
+          <option value="Buku">Buku</option>
+          <option value="Aksesori">Aksesori</option>
+          <option value="Lainnya">Lainnya</option>
+        </select>
+      </div>
+
+      <div class="products" id="products"></div>
+    </section>
+
+    <section class="about">
+      <h2>Tentang ALORA</h2>
+      <p>
+        ALORA adalah toko yang mempertemukan barang-barang
+        preloved dengan pemilik baru. Setiap barang memiliki cerita,
+        kondisi, dan harga yang berbeda. Periksa deskripsi produk
+        sebelum melakukan pemesanan.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>ALORA</strong></p>
+    <p>Temukan barang favoritmu, gunakan kembali dengan bangga.</p>
+    <p>&copy; 2026 ALORA</p>
+  </footer>
+
+  <script>
+    const products = [
+      {
+        name: "Kemeja Kasual",
+        category: "Pakaian",
+        condition: "Kondisi: sangat baik",
+        price: 45000,
+        image: "https://pin.it/219hvWakL",
+        stock: true
+      },
+      {
+        name: "Tas Selempang",
+        category: "Tas",
+        condition: "Kondisi: baik",
+        price: 60000,
+        image: "https://pin.it/7jFVSxSf5",
+        stock: true
+      },
+      {
+        name: "Sepatu Kasual",
+        category: "Sepatu",
+        condition: "Kondisi: baik, ada bekas pemakaian",
+        price: 85000,
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600",
+        stock: true
+      },
+      {
+        name: "Buku Bacaan",
+        category: "Buku",
+        condition: "Kondisi: baik",
+        price: 20000,
+        image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600",
+        stock: true
+      },
+      {
+        name: "Jam Tangan",
+        category: "Aksesori",
+        condition: "Kondisi: sangat baik",
+        price: 50000,
+        image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600",
+        stock: true
+      },
+      {
+        name: "Dompet",
+        category: "Lainnya",
+        condition: "Kondisi: baik",
+        price: 25000,
+        image: "https://images.unsplash.com/photo-1627123424574-724758594e93?w=600",
+        stock: true
+      }
+    ];
+
+    const productContainer = document.getElementById("products");
+    const searchInput = document.getElementById("search");
+    const categorySelect = document.getElementById("category");
+
+    // GANTI dengan nomor WhatsApp tokomu.
+    // Format Indonesia: 628xxxxxxxxxx
+    const whatsappNumber = "6285293412691";
+
+    function formatRupiah(price) {
+      return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        maximumFractionDigits: 0
+      }).format(price);
+    }
+
+    function showProducts() {
+      const keyword = searchInput.value.toLowerCase().trim();
+      const category = categorySelect.value;
+
+      const filtered = products.filter(function(product) {
+        const matchesName =
+          product.name.toLowerCase().includes(keyword);
+
+        const matchesCategory =
+          category === "semua" || product.category === category;
+
+        return matchesName && matchesCategory;
+      });
+
+      if (filtered.length === 0) {
+        productContainer.innerHTML =
+          '<p class="empty">Barang belum ditemukan.</p>';
+        return;
+      }
+
+      productContainer.innerHTML = filtered.map(function(product) {
+        const message = encodeURIComponent(
+          "Halo, saya tertarik membeli " + product.name +
+          ". Apakah barang ini masih tersedia?"
+        );
+
+        const button = product.stock
+          ? '<a class="buy" target="_blank" rel="noopener" href="https://wa.me/' +
+            whatsappNumber + '?text=' + message +
+            '">Pesan melalui WhatsApp</a>'
+          : '<span class="buy">Stok habis</span>';
+
+        return `
+          <article class="product">
+            <img
+              src="${product.image}"
+              alt="${product.name}"
+              loading="lazy"
+            >
+
+            <div class="product-info">
+              <p class="category">${product.category}</p>
+              <h3>${product.name}</h3>
+              <p class="condition">${product.condition}</p>
+              <p class="price">${formatRupiah(product.price)}</p>
+              ${button}
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    searchInput.addEventListener("input", showProducts);
+    categorySelect.addEventListener("change", showProducts);
+
+    showProducts();
+  </script>
+
+</body>
+</html>
